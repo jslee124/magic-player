@@ -1,0 +1,66 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Development Servers",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Frontend Dev Server",
+			"type": "shell",
+			"command": "npm",
+			"args": ["run", "dev:frontend"],
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Backend Dev Server",
+			"type": "shell",
+			"command": "npm",
+			"args": ["run", "dev:backend"],
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build All",
+			"type": "shell",
+			"command": "npm",
+			"args": ["run", "build"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Type Check All",
+			"type": "shell",
+			"command": "npm",
+			"args": ["run", "type-check"],
+			"group": "test",
+			"problemMatcher": [
+				"$tsc"
+			]
+		},
+		{
+			"label": "Lint All",
+			"type": "shell",
+			"command": "npm",
+			"args": ["run", "lint"],
+			"group": "test",
+			"problemMatcher": [
+				"$eslint-stylish"
+			]
+		}
+	]
+}

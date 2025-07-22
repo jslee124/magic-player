@@ -1,0 +1,39 @@
+{
+  "name": "magic-player",
+  "version": "1.0.0",
+  "description": "A modern web-based music player with file management and playlist support",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "npm run build:shared && npm run build:backend && npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build:shared": "cd shared && npm run type-check",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install && cd ../shared && npm install",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint",
+    "clean": "rm -rf frontend/dist backend/dist shared/dist */node_modules",
+    "type-check": "npm run type-check:frontend && npm run type-check:backend && npm run type-check:shared",
+    "type-check:frontend": "cd frontend && npx tsc --noEmit",
+    "type-check:backend": "cd backend && npm run type-check",
+    "type-check:shared": "cd shared && npm run type-check"
+  },
+  "keywords": ["music", "player", "web", "typescript", "react", "express"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
