@@ -1,44 +1,57 @@
 import { Router } from 'express';
+import { ApiResponse } from 'shared';
 
 const router = Router();
 
-// Placeholder routes - will be implemented in later tasks
+// API info endpoint
 router.get('/', (_req, res) => {
-  res.json({
+  const response: ApiResponse<{
+    name: string;
+    version: string;
+    endpoints: Record<string, string>;
+  }> = {
     success: true,
-    message: 'Magic Player API v1.0.0',
-    endpoints: {
-      tracks: '/api/tracks',
-      playlists: '/api/playlists',
-      upload: '/api/upload',
+    data: {
+      name: 'Music Player API',
+      version: '1.0.0',
+      endpoints: {
+        tracks: '/api/tracks',
+        playlists: '/api/playlists',
+        upload: '/api/tracks/upload',
+      },
     },
-  });
+  };
+  res.json(response);
 });
 
-// Tracks routes (placeholder)
+// Tracks routes (placeholder - will be implemented in later tasks)
 router.get('/tracks', (_req, res) => {
-  res.json({
+  const response: ApiResponse<[]> = {
     success: true,
     data: [],
-    message: 'Tracks endpoint - to be implemented',
-  });
+  };
+  res.json(response);
 });
 
-// Playlists routes (placeholder)
+// Playlists routes (placeholder - will be implemented in later tasks)
 router.get('/playlists', (_req, res) => {
-  res.json({
+  const response: ApiResponse<[]> = {
     success: true,
     data: [],
-    message: 'Playlists endpoint - to be implemented',
-  });
+  };
+  res.json(response);
 });
 
-// Upload routes (placeholder)
-router.post('/upload', (_req, res) => {
-  res.json({
+// Upload routes (placeholder - will be implemented in later tasks)
+router.post('/tracks/upload', (_req, res) => {
+  const response: ApiResponse<never> = {
     success: false,
-    message: 'Upload endpoint - to be implemented',
-  });
+    error: {
+      code: 'NOT_IMPLEMENTED',
+      message: 'Upload endpoint will be implemented in later tasks',
+    },
+  };
+  res.status(501).json(response);
 });
 
 export const apiRoutes = router;
